@@ -27,7 +27,65 @@ const CardInfo = () => {
     errorMessaage: "",
   });
 
-  const checkCardName = () => {};
+  const checkCardName = (data) => {
+    if (data.length < 2) {
+      setCardNameValidation({
+        validation: false,
+        errorMessage: "Please enter a valid name",
+      });
+    } else {
+      setCardNameValidation({ validation: true, errorMessage: "" });
+    }
+    setCardName(data);
+  };
+
+  //todo validations.. more clear validations are need to be implemented
+  const checkCardNumber = (data) => {
+    setCardNumber(data);
+    if (data.length > 12) {
+      setCardNumberValidation({
+        validation: false,
+        errorMessage: "Please enter a valid card number",
+      });
+    } else {
+      setCardNumberValidation({
+        validation: false,
+        errorMessage: "",
+      });
+    }
+  };
+
+  const checkExpiryDate = (data) => {
+    const expirationRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    const isValidExpirationDate = expirationRegex.test(data);
+    if (!isValidExpirationDate) {
+      setExpireDateValidation({
+        validation: false,
+        errorMessage: "Please enter expiration date",
+      });
+    } else {
+      setExpireDateValidation({
+        validation: true,
+        errorMessage: "",
+      });
+    }
+    setExpiryDate(data);
+  };
+
+  const checkCvv = (data) => {
+    setCVC(data);
+    if (data.length >3) {
+      setCVCValidation({
+        validation: false,
+        errorMessage: "Please enter correct CVV",
+      });
+    } else {
+      setCVCValidation({
+        validation: true,
+        errorMessage: "",
+      });
+    }
+  };
 
   return (
     <div className="pt-6 space-y-8">
@@ -37,7 +95,7 @@ const CardInfo = () => {
           Safe and secure payment processing gauranteed
         </p>
       </div>
-      <div className="w-full flex justify-between pr-6">
+      <div className="w-full flex justify-between">
         <div className="flex space-x-[22px]">
           <img src={CreditCard} alt={CreditCard} />
           <span className="font-semibold text-greyscaleG2">Card</span>
@@ -53,29 +111,33 @@ const CardInfo = () => {
               getInput={checkCardName}
               validation={cardNameValidation}
               placeholder={"John Doe"}
+              currentValue={cardName}
             />
             <InputContainer
               label={"Card Number"}
               type={"number"}
-              getInput={checkCardName}
-              validation={cardNameValidation}
+              getInput={checkCardNumber}
+              validation={cardNumberValidation}
               placeholder={"•••• •••• ••••"}
+              currentValue={cardNumber}
             />
           </div>
           <div className="input-container-row">
             <InputContainer
               label={"Expiry Date"}
               type={"text"}
-              getInput={checkCardName}
-              validation={cardNameValidation}
+              getInput={checkExpiryDate}
+              validation={expireDateValidation}
               placeholder={"MM/YY"}
+              currentValue={expiryDate}
             />
             <InputContainer
               label={"CVV/CVC"}
               type={"number"}
-              getInput={checkCardName}
-              validation={cardNameValidation}
+              getInput={checkCvv}
+              validation={cvvValidation}
               placeholder={"•••"}
+              currentValue={cvv}
             />
           </div>
         </form>

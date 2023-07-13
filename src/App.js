@@ -18,8 +18,8 @@ function App() {
           <div className="mb-[64px] not-sr-only md:sr-only">
             <Header />
           </div>
-          <div className="w-full max-w-5xl flex flex-col-reverse items-center  md:mr-6 md:flex-row border-b-[1px]">
-            <div className="w-full max-w-3xl mb-5 md:before:pr-6 md:border-r-[1px] border-greyscale space-y-11">
+          <div className="w-full max-w-5xl flex flex-col-reverse items-center  md:flex-row border-b-[1px]">
+            <div className="w-full max-w-3xl mb-5 md:pr-6 md:border-r-[1px] border-greyscale space-y-11">
               <div className="mb-[64px] sr-only md:not-sr-only">
                 <Header />
               </div>

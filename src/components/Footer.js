@@ -13,7 +13,7 @@ const Footer = () => {
           Tickete Inc. 1013 Centre Road Suite 403 B Wilmington DE 19805
         </p>
       </div>
-      <div className="w-full flex flex-col-reverse justify-between my-8 ">
+      <div className="w-full flex flex-col-reverse md:flex-row justify-between my-8 ">
         <div className="flex space-x-3 mt-10 md:mt-0">
           <span className=" cursor-pointer">© Tickete Inc.</span>
           <span>•</span>

@@ -8,6 +8,8 @@ const Details = () => {
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
 
+
+  // We are creating objects so that we can pass each input fields a seperate error messages
   const [nameValidation, setNameValidation] = useState({
     validation: true,
     errorMessage: "",
@@ -24,6 +26,9 @@ const Details = () => {
     validation: true,
     errorMessage: "",
   });
+
+
+  // fucntions are are fetched from input fields and validated here then passed back to the input field
 
   const checkName = (data) => {
     if (data.length < 2) {
@@ -63,14 +68,12 @@ const Details = () => {
   };
 
   const checkPhone = (data) => {
-    const filterRegex = /^\+\d+$/;
+    const filterRegex = /[0-9+]+/g;
     const value = data.match(filterRegex);
-    console.log(value);
-    value ? setPhoneno(value) : setPhoneno("");
+    value ? setPhoneno(value[0]) : setPhoneno("");
 
-    const validateRegex = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
-
-    const isValidPhoneNumber = validateRegex.test(value);
+    const validateRegex = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s./0-9]*$/g;
+    const isValidPhoneNumber = validateRegex.test(data);
 
     if (!isValidPhoneNumber) {
       setPhoneValidation({
