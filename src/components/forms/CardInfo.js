@@ -49,7 +49,7 @@ const CardInfo = () => {
       });
     } else {
       setCardNumberValidation({
-        validation: false,
+        validation: true,
         errorMessage: "",
       });
     }
