@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-OpenSans
+}
+
+.input-container {
+  @apply flex flex-col justify-center rounded-xl border-[1px] h-[60px]  w-96 relative px-4 py-5 
+}
+
+.input-label { 
+  @apply  absolute  bg-brandGhostWhite transition-all ease-in delay-150
+}
+
+.input-field {
+  @apply w-full max-w-[295px] ring-0 focus:outline-none
+}
+
+.label-up {
+  @apply transform -translate-y-[210%] text-xs
+}
+
+@keyframes accordion-open {
+  0% {
+    max-height: 0;
+    opacity: 0;
+  }
+  100% {
+    max-height: 1000px;
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-close {
+  0% {
+    max-height: 1000px;
+    opacity: 1;
+  }
+  100% {
+    max-height: 0;
+    opacity: 0;
+  }
+}
