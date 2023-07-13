@@ -14,15 +14,15 @@ const FAQDropdown = ({ label, content }) => {
         className="flex relative items-center text-greyscaleG2 justify-between cursor-pointer"
         onClick={toggleAccordion}
       >
-        <h2 className="text-lg font-semibold text-greyscaleG3">{label}</h2>
+        <h2 className="text-lg font-semibold text-greyscaleG3 pr-6">{label}</h2>
         <span
-          className={`absolute right-0 transition-transform transform rotate-90${
+          className={`absolute ml-3 right-0 transition-transform transform rotate-90${
             isOpen ? "transform rotate-180" : ""
           }`}
         >
           <img src={Minus} alt="toggler" />
         </span>
-        <span>
+        <span className="absolute right-0">
           <img src={Minus} alt="toggler" />
         </span>
       </div>

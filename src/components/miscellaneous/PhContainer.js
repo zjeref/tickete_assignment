@@ -1,33 +1,29 @@
 import React, { useState, useEffect } from "react";
 import FlagWithCode from "./FlagWithCode";
 
-const PhContainer = ({ label, type, getInput, validation }) => {
-  const [inputVal, setInputVal] = useState();
-  const [phoneno, setPhoneno] = useState();
-  const [countryVal, setCountryVal] = useState({});
+const PhContainer = ({ label, type, getInput, validation, currentValue }) => {
+  const [inputVal, setInputVal] = useState("");
+  const [countryVal, setCountryVal] = useState("");
   const [currentValidation, setCurrentValidation] = useState(validation);
+
+  // this useEffect is to filter is set the data to the parent to later validate if required
+  useEffect(() => {
+    setInputVal(currentValue);
+  }, [currentValue]);
 
   useEffect(() => {
     setCurrentValidation(validation);
   }, [validation]);
 
   const onValueSet = (value) => {
-    setInputVal(value);
-    if(inputVal) {
-      const phoneno= inputVal.replace(/^\+\d+\s*/, ""); 
-      getInput(phoneno)
-    }
+    getInput(value)
+    setCountryVal(value);
   };
 
   const fetchCountryVal = (value) => {
-    const countryCode = value.countryCode.replace("+", "");
-    setInputVal(countryCode);
-    setCountryVal(value.countryCode);
-    if(inputVal) {
-      const phoneno= inputVal.replace(countryCode, ""); 
-      getInput(phoneno)
-    }
+    setInputVal(value.countryCode)
   };
+  console.log(inputVal)
 
   return (
     <div>
@@ -46,7 +42,7 @@ const PhContainer = ({ label, type, getInput, validation }) => {
         <div className="flex">
           <FlagWithCode
             fetchCountryVal={fetchCountryVal}
-            countryVal={inputVal}
+            countryVal={countryVal}
           />
           <input
             className="input-field"
@@ -57,7 +53,9 @@ const PhContainer = ({ label, type, getInput, validation }) => {
         </div>
       </label>
       {!currentValidation.validation ? (
-        <span className="text-redNCS text-xs">{currentValidation.errorMessage}</span>
+        <span className="text-redNCS text-xs">
+          {currentValidation.errorMessage}
+        </span>
       ) : (
         ""
       )}

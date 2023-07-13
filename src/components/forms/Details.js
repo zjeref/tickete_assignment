@@ -3,10 +3,8 @@ import InputContainer from "../miscellaneous/InputContainer";
 import PhContainer from "../miscellaneous/PhContainer";
 
 const Details = () => {
-  const [countryData, setCountryData] = useState([]);
-
   const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+  const [phoneno, setPhoneno] = useState("");
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
 
@@ -65,7 +63,16 @@ const Details = () => {
   };
 
   const checkPhone = (data) => {
-    if (data.length !== 10) {
+    const filterRegex = /^\+\d+$/;
+    const value = data.match(filterRegex);
+    console.log(value);
+    value ? setPhoneno(value) : setPhoneno("");
+
+    const validateRegex = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
+
+    const isValidPhoneNumber = validateRegex.test(value);
+
+    if (!isValidPhoneNumber) {
       setPhoneValidation({
         validation: false,
         errorMessage: "Enter a valid Phone Number",
@@ -87,33 +94,37 @@ const Details = () => {
         </p>
       </div>
       <form className="w-full mt-8 space-y-6">
-        <div className="w-full flex space-x-6">
+        <div className="input-container-row">
           <InputContainer
             label={"Full Name"}
             type={"text"}
             getInput={checkName}
             validation={nameValidation}
+            currentValue={name}
           />
 
           <PhContainer
             label={"Phone number"}
-            type={"number"}
+            type={"text"}
             getInput={checkPhone}
             validation={phoneValidation}
+            currentValue={phoneno}
           />
         </div>
-        <div className="w-full flex space-x-6">
+        <div className="input-container-row">
           <InputContainer
             label={"Email"}
             type={"email"}
             getInput={checkEmail}
             validation={emailValidation}
+            currentValue={email}
           />
           <InputContainer
             label={"Confirm Email"}
             type={"email"}
             getInput={checkConfirmEmail}
             validation={confirmEmailValidation}
+            currentValue={confirmEmail}
           />
         </div>
       </form>

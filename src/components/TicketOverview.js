@@ -26,7 +26,7 @@ const TicketOverview = () => {
           <div className="py-6 border-y-[1px]">
             <p className="flex space-x-3">
               <img src={tag} alt="tag" />
-              <span className="font-semibold underline text-sacramento">
+              <span className="font-semibold underline text-sacramento hover:cursor-pointer">
                 Have a promo code?
               </span>
             </p>
@@ -36,7 +36,7 @@ const TicketOverview = () => {
               <span>Total:</span>
               <span>${adultDetails.price + childDetails.price}</span>
             </h2>
-            <p className="text-[12px] text-greyscaleG3 leading-6 underline">
+            <p className="text-[12px] text-greyscaleG3 leading-6 underline cursor-pointer">
               You will pay in USD.
             </p>
           </div>

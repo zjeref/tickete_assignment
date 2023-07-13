@@ -30,14 +30,14 @@ const CardInfo = () => {
   const checkCardName = () => {};
 
   return (
-    <div className="pt-6 pb-5 space-y-8">
+    <div className="pt-6 space-y-8">
       <div className="space-y-[6px]">
         <h2 className="text-2xl font-semibold text-greyscaleG2">Pay With</h2>
         <p className="text-[15px] text-greyscaleG3 leading-6">
           Safe and secure payment processing gauranteed
         </p>
       </div>
-      <div className="w-full flex justify-between">
+      <div className="w-full flex justify-between pr-6">
         <div className="flex space-x-[22px]">
           <img src={CreditCard} alt={CreditCard} />
           <span className="font-semibold text-greyscaleG2">Card</span>
@@ -46,7 +46,7 @@ const CardInfo = () => {
       </div>
       <div className="my-6 ">
         <form className="w-full space-y-6">
-          <div className="w-full flex space-x-6">
+          <div className="input-container-row">
             <InputContainer
               label={"Name on Card"}
               type={"text"}
@@ -62,7 +62,7 @@ const CardInfo = () => {
               placeholder={"•••• •••• ••••"}
             />
           </div>
-          <div className="w-full flex space-x-6">
+          <div className="input-container-row">
             <InputContainer
               label={"Expiry Date"}
               type={"text"}

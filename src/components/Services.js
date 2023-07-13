@@ -7,13 +7,13 @@ import ChatService from "../assets/ChatService.svg";
 
 const Services = () => {
   return (
-    <div className="my-16">
+    <div className="w-full my-16 ">
       <div className="mb-8">
         <h2 className="text-2xl font-semibold text-greyscaleG2">
           The Tickete promise
         </h2>
       </div>
-      <div className="w-full flex space-x-6">
+      <div className="w-full md:flex md:flex-row md:justify-between md:space-x-6 space-y-6 md:space-y-0">
         <ServiceContainer
           image={circleTick}
           title={"Official"}

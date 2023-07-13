@@ -11,7 +11,7 @@ const PaymentConfirm = () => {
         <h2 className="text-2xl font-semibold text-greyscaleG2">
           Total: ${totalAmount}
         </h2>
-        <p className="text-[12px] text-greyscaleG3 leading-6 underline">
+        <p className="text-[12px] text-greyscaleG3 leading-6 underline cursor-pointer">
           You will pay in USD.
         </p>
       </div>

@@ -7,7 +7,7 @@ body {
 }
 
 .input-container {
-  @apply flex flex-col justify-center rounded-xl border-[1px] h-[60px]  w-96 relative px-4 py-5 
+  @apply flex flex-col justify-center rounded-xl border-[1px] h-[60px] md:w-96 w-80 relative px-4 py-5 hover:cursor-pointer 
 }
 
 .input-label { 
@@ -19,7 +19,11 @@ body {
 }
 
 .label-up {
-  @apply transform -translate-y-[210%] text-xs
+  @apply transform -translate-y-[190%] text-xs
+}
+
+.input-container-row {
+  @apply w-full flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0
 }
 
 @keyframes accordion-open {

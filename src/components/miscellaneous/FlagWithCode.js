@@ -43,14 +43,14 @@ const FlagWithCode = ({ fetchCountryVal, countryVal }) => {
   useEffect(() => {
     if (countryData) {
       const filteredCountry = countryData.find(
-        (country) => country.countryCode.slice(1) === countryVal
+        (country) => country.countryCode === countryVal
       );
       if (filteredCountry) {
         setSelectedCountry(filteredCountry);
         fetchCountryVal(filteredCountry);
       }
     }
-  }, [countryVal, countryData]);
+  }, [countryVal, [countryData]]);
 
   const setActiveCountry = (data) => {
     setSelectedCountry(data);

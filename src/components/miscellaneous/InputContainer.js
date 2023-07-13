@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 
-const InputContainer = ({ label, type, getInput, validation, placeholder }) => {
+const InputContainer = ({ label, type, getInput, validation, placeholder, currentValue }) => {
   const [inputVal, setInputVal] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [currentValidation, setCurrentValidation] = useState(validation);
+
+  // this useEffect is to filter is set the data to the parent to later validate if required
+  useEffect(()=> {
+    setInputVal(currentValue)
+  },[currentValue])
 
   useEffect(() => {
     setCurrentValidation(validation);
   }, [validation]);
 
   const onValueSet = (value) => {
-    setInputVal(value);
     getInput(value);
   };
 
